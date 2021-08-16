@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Users.css';
 
 function Users() {
+	const [users, setUsers] = useState([]);
+	useEffect(() => {
+		fetch('https://netcraft2.s3-eu-west-1.amazonaws.com/users.json')
+			.then((res) => res.json())
+			.then((data) => setUsers(data))
+	} ,[]);
+
+
+
 	return (
 		<div className="Users">
 			<h3>Users:</h3>
@@ -10,6 +19,7 @@ function Users() {
 				<code>https://netcraft2.s3-eu-west-1.amazonaws.com/users.json</code>
 			</p>
 			<ul>
+				{users.map((user, index) => <li key={index}>{user.name}</li>)}
 
 			</ul>
 		</div>

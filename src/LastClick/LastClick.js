@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './LastClick.css';
 
 function LastClick() {
 
+	const [number, setNumbers] = useState();
 	return (
 		<div className="LastClick">
 			<p>
@@ -10,12 +11,12 @@ function LastClick() {
 				Make the box show the number of the last clicked button.
 			</p>
 			<div className="LastClick__buttons">
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
+				<button onClick={() => setNumbers(1) }>1</button>
+				<button onClick={() => setNumbers(2) }>2</button>
+				<button onClick={() => setNumbers(3) }>3</button>
 			</div>
 			<div className="LastClick__box">
-				1
+				{number}
 			</div>
 		</div>
 	)

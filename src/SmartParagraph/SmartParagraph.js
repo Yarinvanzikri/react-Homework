@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './SmartParagraph.css';
 
 function SmartParagraph() {
-
+	const [isShown, setIsShown] = useState(true)
 	const [text] = useState(
 		`I must explain to you how all this mistaken idea of
 		denouncing pleasure and praising pain was born and I will give
@@ -19,9 +19,9 @@ function SmartParagraph() {
 				Clicking again should show all of the text back.
 			</p>
 			<p className="SmartParagraph__value">
-				{text}
+				{isShown ? text : text.substring(0,102)}
 			</p>
-			<button>Toggle</button>
+			<button onClick={() => setIsShown(!isShown)}>Toggle</button>
 		</div>
 	);
 }
